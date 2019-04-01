@@ -123,24 +123,6 @@ def sky_and_telescope():
 
     return {'picture-of-the-day': (), 'news': news}
 
-
-# if __name__ == '__main__':
-
-    # import time
-    # start = time.time()
-
-    # scraped_data_1 = astronomy_dot_com()
-    # scraped_data_2 = nasa_apod()
-    # scraped_data_3 = space_dot_com()
-    # scraped_data_4 = sky_and_telescope()
-
-    # end = time.time()
-    # print('Elapsed time: ', end - start) # 22.401979207992554
-    # print(scraped_data)
-
-    # import time
-    # start = time.time()
-
 def main():
 
     with ThreadPoolExecutor(max_workers=4) as executor:
@@ -153,8 +135,5 @@ def main():
         scraped_data_2 = f2.result()
         scraped_data_3 = f3.result()
         scraped_data_4 = f4.result()
-
-    # end = time.time()
-    # print('Elapsed time: ', end - start)    # 6.264099836349487
 
     return (scraped_data_1, scraped_data_2, scraped_data_3, scraped_data_4)
