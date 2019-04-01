@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>debs-astronomy</title>
+  
+  <link type="text/css" rel="stylesheet" href="/static/css/responsive-tabs.css" />
+  <link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+  <link href="/static/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+
+  <div id="heading">My Astronomy site</div>
+
+  <div id="responsiveTabsMain">
+    <ul>
+        <li id="li-one"><a href="#tab-1" id="li1-a">Picture of the day</a></li>
+        <li><a href="#tab-2" id="li2-a">News</a></li>
+        <li><a href="#tab-3" id="li3-a">About</a></li>
+    </ul>
+
+    <div id="tab-1">
+      <div class="my-carousel">
+        <div>
+          {% if data[0]['picture-of-the-day'][1] != 'NA' %}
+          <figcaption class="caption">
+            <a href="http://www.astronomy.com/photos/picture-of-day" target="_blank">Astronomy Magazine</a> - <i>{{ data[0]['picture-of-the-day'][1] }}</i>
+          </figcaption>
+          {% endif %}
+          <figure>
+            <img src="{{ data[0]['picture-of-the-day'][0] }}">
+          </figure>
+        </div>
+        <div>
+          {% if data[1]['picture-of-the-day'][1] != 'NA' %}
+          <figcaption class="caption">
+            <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">NASA</a> - <i>{{ data[1]['picture-of-the-day'][1] }}</i>
+          </figcaption>
+          {% endif %}
+          <figure>
+            <img src="{{ data[1]['picture-of-the-day'][0] }}">
+          </figure>
+        </div>
+        <div>
+          {% if data[2]['picture-of-the-day'][1] != 'NA' %}
+          <figcaption class="caption">
+            <a href="{{ data[2]['picture-of-the-day'][1] }}" target="_blank">space.com - <i>Image of the day</i></a>
+          </figcaption>
+          {% endif %}
+          <figure>
+            <img src="{{ data[2]['picture-of-the-day'][0] }}">
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div id="tab-2">
+      <div id="accordion">
+        <h3>astronomy.com</h3>
+        <div id="acc-div-one">
+          <ul>
+            {% for newsitem in data[0]['news'] %}
+            {% if newsitem[0] %}
+            <li><a href="{{ newsitem[0]}}" target="_blank">{{ newsitem[1] }}</a></li>
+            {% else %}
+            <li>{{ newsitem[1] }}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <h3>space.com</h3>
+        <div>
+          <ul>
+            {% for newsitem in data[2]['news'] %}
+            {% if newsitem[0] %}
+            <li><a href="{{ newsitem[0]}}" target="_blank">{{ newsitem[1] }}</a></li>
+            {% else %}
+            <li>{{ newsitem[1] }}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <h3>sky and telescope</h3>
+        <div>
+          <ul>
+            {% for newsitem in data[3]['news'] %}
+            {% if newsitem[0] %}
+            <li><a href="{{ newsitem[0]}}" target="_blank">{{ newsitem[1] }}</a></li>
+            {% else %}
+            <li>{{ newsitem[1] }}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="tab-3">
+      <img src="/static/dp.jpg" id="myself">
+      <div id="about">I, Debashish, am an astronomy enthusiast. It used to be my hobby during college days when I was part of an astronomy club. I have attended public talks, visited planetaria in India and abroad, and chased the solar eclipse. This is apart from reading books and watching sci-fi movies. This website is in memory of the good old days. It is built with the Python Flask framework and jQuery.</div>
+    </div>
+  </div>
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/static/js/jquery.responsiveTabs.min.js"></script>
+  <script type="text/javascript">
+    $("#accordion").accordion({
+      heightStyle: "fill"
+    });
+  </script>
+  <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+  <script type="text/javascript" src="/static/js/main.js"></script>
+</body>
+</html>
