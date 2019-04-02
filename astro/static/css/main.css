@@ -65,7 +65,7 @@ figure {
   html {
     /* For Android */
     height: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
   #responsiveTabsMain {
     width: 100%;
