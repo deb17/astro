@@ -87,12 +87,12 @@ def space_dot_com():
 
     try:
         image_container = soup.select('[href*="34-image-day"]')[1]
+        img_url = image_container.img['data-src']
     except Exception:
         image_container = soup.select_one('#Item1')
         img_url = image_container.img['src']
         url = image_container.a['href']
     else:
-        img_url = image_container.img['data-src']
         url = image_container['href']
 
     img_url = re.sub(r'-\d+-\d+.jpg$', '-600-80.jpg', img_url)
