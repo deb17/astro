@@ -13,7 +13,7 @@ def astronomy_dot_com():
         url = ('https://via.placeholder.com/600x400?'
                'text=Image+unavailable.+Try+reloading.')
         caption = 'NA'
-        news = [('', 'Unavailable. Trying reloading the page.')]
+        news = [('', 'Unavailable. Try reloading the page.')]
         return {'picture-of-the-day': (url, caption), 'news': news}
 
     html = resp.content
@@ -66,7 +66,7 @@ def space_dot_com():
         img_url = ('https://via.placeholder.com/600x400?'
                    'text=Image+unavailable.+Try+reloading.')
         url = 'NA'
-        news = [('', 'Unavailable. Trying reloading the page.')]
+        news = [('', 'Unavailable. Try reloading the page.')]
         return {'picture-of-the-day': (img_url, url), 'news': news}
 
     html = resp.content
@@ -105,21 +105,25 @@ def sky_and_telescope():
     try:
         resp = requests.get(domain)
     except Exception:
-        news = [('', 'Unavailable. Trying reloading the page.')]
+        news = [('', 'Unavailable. Try reloading the page.')]
         return {'picture-of-the-day': (), 'news': news}
 
     html = resp.content
 
     soup = bs4.BeautifulSoup(html, 'lxml')
 
+    ul = None
     for h3 in soup.select('.widget-title'):
         if h3.text == 'Astronomy News':
             ul = h3.next_sibling.next_sibling
             break
 
-    news = []
-    for li in ul.select('li')[:5]:
-        news.append((li.a['href'], li.a.text.strip()))
+    if ul:
+        news = []
+        for li in ul.select('li')[:5]:
+            news.append((li.a['href'], li.a.text.strip()))
+    else:
+        news = [('', 'Unavailable. Try reloading the page.')]
 
     return {'picture-of-the-day': (), 'news': news}
 
