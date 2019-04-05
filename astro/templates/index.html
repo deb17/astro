@@ -29,32 +29,32 @@
     <div id="tab-1">
       <div class="my-carousel">
         <div>
-          {% if data[0]['picture-of-the-day'][1] != 'NA' %}
-          <figcaption class="caption">
-            <a href="http://www.astronomy.com/photos/picture-of-day" target="_blank">Astronomy Magazine</a> - <i>{{ data[0]['picture-of-the-day'][1] }}</i>
-          </figcaption>
-          {% endif %}
           <figure>
+            {% if data[0]['picture-of-the-day'][1] != 'NA' %}
+            <figcaption class="caption">
+              <a href="http://www.astronomy.com/photos/picture-of-day" target="_blank">Astronomy Magazine</a> - <i>{{ data[0]['picture-of-the-day'][1] }}</i>
+            </figcaption>
+            {% endif %}
             <img src="{{ data[0]['picture-of-the-day'][0] }}">
           </figure>
         </div>
         <div>
+          <figure id="nasa-fig">
           {% if data[1]['picture-of-the-day'][1] != 'NA' %}
-          <figcaption class="caption">
-            <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">NASA</a> - <i>{{ data[1]['picture-of-the-day'][1] }}</i>
-          </figcaption>
+            <figcaption class="caption">
+              <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">NASA</a> - <i>{{ data[1]['picture-of-the-day'][1] }}</i>
+            </figcaption>
           {% endif %}
-          <figure>
             <img src="{{ data[1]['picture-of-the-day'][0] }}">
           </figure>
         </div>
         <div>
-          {% if data[2]['picture-of-the-day'][1] != 'NA' %}
-          <figcaption class="caption">
-            <a href="{{ data[2]['picture-of-the-day'][1] }}" target="_blank">space.com - <i>Image of the day</i></a>
-          </figcaption>
-          {% endif %}
           <figure>
+            {% if data[2]['picture-of-the-day'][1] != 'NA' %}
+            <figcaption class="caption">
+              <a href="{{ data[2]['picture-of-the-day'][1] }}" target="_blank">space.com - <i>Image of the day</i></a>
+            </figcaption>
+            {% endif %}
             <img src="{{ data[2]['picture-of-the-day'][0] }}">
           </figure>
         </div>

@@ -9,6 +9,7 @@ def astronomy_dot_com():
     domain = 'http://www.astronomy.com'
     try:
         resp = requests.get(domain)
+        resp.raise_for_status()
     except Exception:
         url = ('https://via.placeholder.com/600x400?'
                'text=Image+unavailable.+Try+reloading.')
@@ -41,6 +42,7 @@ def nasa_apod():
     domain = 'https://apod.nasa.gov/'
     try:
         resp = requests.get(domain)
+        resp.raise_for_status()
     except Exception:
         url = ('https://via.placeholder.com/600x400?'
                'text=Image+unavailable.+Try+reloading.')
@@ -62,6 +64,7 @@ def space_dot_com():
     domain = 'https://www.space.com'
     try:
         resp = requests.get(domain)
+        resp.raise_for_status()
     except Exception:
         img_url = ('https://via.placeholder.com/600x400?'
                    'text=Image+unavailable.+Try+reloading.')
@@ -104,6 +107,7 @@ def sky_and_telescope():
     domain = 'https://www.skyandtelescope.com'
     try:
         resp = requests.get(domain)
+        resp.raise_for_status()
     except Exception:
         news = [('', 'Unavailable. Try reloading the page.')]
         return {'picture-of-the-day': (), 'news': news}
