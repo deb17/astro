@@ -19,7 +19,7 @@ img {
   /*height: 400px;*/
   height: 65vh;
 }
-#nasa-fig img, #nasa-fig figcaption {
+#nasa-fig img {
   width: 65vh;
   max-width: 46vw;
   margin: 0 auto;
@@ -64,7 +64,7 @@ figure {
   img {
     width: 57vw;
   }
-  #nasa-fig img, #nasa-fig figcaption {
+  #nasa-fig img {
     width: 65vh;
     max-width: 57vw;
     margin: 0 auto;
@@ -82,13 +82,15 @@ figure {
   #tab-1, #tab-2, #tab-3 {
     height: 100%;
   }
-  img, #nasa-fig img, #nasa-fig figcaption {
+  img, #nasa-fig img {
     width: 100%;
     height: 100%;
   }
 }
 #nasa-fig figcaption {
   margin-bottom: 4px;
+  width: 100%;
+  text-align: center;
 }
 #accordion {
   width: 80%;

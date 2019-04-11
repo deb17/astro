@@ -57,8 +57,8 @@ def nasa_apod():
         url = domain + soup.img['src']
     else:
         url = ('https://via.placeholder.com/600x400?'
-               'text=Image+unavailable.')
-        caption = 'NA'
+               'text=No+image+at+apod.nasa.gov')
+        caption = 'No image.'
         return {'picture-of-the-day': (url, caption), 'news': []}
 
     caption = soup.select('center')[1].b.text
