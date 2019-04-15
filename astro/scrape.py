@@ -25,7 +25,7 @@ def astronomy_dot_com():
     for i in soup.select('.previewImage'):
         if i.a['href'].find('picture-of-day') > -1:
             url = domain + i.img['src']
-            url = re.sub(r'\d+$', '600', url)
+            url = re.sub(r'\d+$', '700', url)
             caption = i.next_sibling.text
             break
 
