@@ -1,5 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 import re
+import pkgutil
+import json
+import random
 
 import requests
 import bs4
@@ -137,17 +140,57 @@ def sky_and_telescope():
 
     return {'picture-of-the-day': (), 'news': news}
 
+def constellation():
+
+    text = pkgutil.get_data('astro', 'data.json').decode()
+    cons = json.loads(text)
+    choice = random.choice(cons)
+
+    url = ('https://www.constellation-guide.com/constellation-list/'
+           + choice.lower().replace(' ', '-') + '-constellation/')
+
+    try:
+        resp = requests.get(url)
+        resp.raise_for_status()
+    except Exception:
+        map_url = ('https://via.placeholder.com/600x400?'
+                   'text=Map+unavailable.+Try+reloading.')
+        info = 'Unavailable. Try reloading the page.'
+        return {'choice': '', 'map-url': map_url, 'info': info}
+
+    html = resp.content
+
+    soup = bs4.BeautifulSoup(html, 'lxml')
+
+    container = soup.select_one('.entry-content')
+
+    info = ''
+    for para in container.find_all('p'):
+        if para.text.startswith('FACTS'):
+            break
+        for a in para.find_all('a'):
+            a.unwrap()
+        info += str(para)
+
+    map_url = soup.select_one('[id^="attachment_"]').a['href']
+
+    return {'choice': choice, 'map-url': map_url, 'info': info}
+
+
 def main():
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=5) as executor:
         f1 = executor.submit(astronomy_dot_com)
         f2 = executor.submit(nasa_apod)
         f3 = executor.submit(space_dot_com)
         f4 = executor.submit(sky_and_telescope)
+        f5 = executor.submit(constellation)
 
         scraped_data_1 = f1.result()
         scraped_data_2 = f2.result()
         scraped_data_3 = f3.result()
         scraped_data_4 = f4.result()
+        scraped_data_5 = f5.result()
 
-    return (scraped_data_1, scraped_data_2, scraped_data_3, scraped_data_4)
+    return (scraped_data_1, scraped_data_2, scraped_data_3, scraped_data_4,
+            scraped_data_5)

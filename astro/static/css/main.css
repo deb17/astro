@@ -13,14 +13,14 @@ html {
   text-align: center;
   font-size: 3em;
 }
-img {
+img.tab1-image {
   /*width: 600px;*/
   width: 46vw;
   /*height: 400px;*/
   height: 65vh;
 }
 #nasa-fig img {
-  width: 65vh;
+  width: auto;
   max-width: 46vw;
   margin: 0 auto;
 }
@@ -29,10 +29,10 @@ img {
   margin: 10px auto auto;
   height: 84vh;
 }
-#tab-1, #tab-2, #tab-3 {
+#tab-1, #tab-2, #tab-3, #tab-4 {
   height: 73vh;
 }
-#li1-a, #li2-a, #li3-a {
+#li1-a, #li2-a, #li3-a, #li4-a {
   font-size: 1em;
 }
 .my-carousel {
@@ -56,37 +56,7 @@ figure {
 .caption a {
   text-decoration: none;
 }
-@media (max-width: 900px) {
-  #responsiveTabsMain {
-    width: 85%;
-    height: 100%;
-  }
-  img {
-    width: 57vw;
-  }
-  #nasa-fig img {
-    width: 65vh;
-    max-width: 57vw;
-    margin: 0 auto;
-  }
-  #heading {
-    font-size: 2.5em;
-  }
-}
-@media (max-width: 600px) {
-
-  #responsiveTabsMain {
-    width: 100%;
-    height: 100%;
-  }
-  #tab-1, #tab-2, #tab-3 {
-    height: 100%;
-  }
-  img, #nasa-fig img {
-    width: 100%;
-    height: 100%;
-  }
-}
+/* media queries were here */
 #nasa-fig figcaption {
   margin-bottom: 4px;
   width: 100%;
@@ -107,7 +77,7 @@ figure {
 #acc-div-one {
   max-height: 24vh;
 }
-#tab-3 {
+#tab-4 {
   background-color: #ffe6ff;
 }
 #myself {
@@ -121,4 +91,91 @@ figure {
   font-family: 'Dancing Script', cursive;
   font-size: 25px;
   margin: 20px 20px;
+}
+#tab-3 a {
+  text-decoration: none;
+}
+#tab-3 h3 {
+  margin-top: 0;
+  margin-bottom: 2vh;
+}
+#tab-3 > small:last-child {
+  float: left;
+  margin-left: 4vw;
+  margin-top: 4px;
+}
+#tab-3 > small:first-of-type {
+  display: none;
+  margin-left: 4vw;
+  margin-top: 4px;
+}
+#cons-name {
+  text-shadow: 0 0 4px blue;
+  font-size: 130%;
+  font-style: italic;
+}
+#constinfo {
+  float: right;
+  width: 30%;
+  height: 64vh;
+  padding: 0 5px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+#constinfo p:first-child:first-letter {
+  font-size: 180%;
+}
+#constinfo p {
+  font-family: 'Courgette', cursive;
+}
+#constmap {
+  float: left;
+  width: 70%;
+  height: 64vh;
+  overflow-y: auto;
+}
+#constmap img {
+  width: 100%;
+}
+@media (max-width: 900px) {
+  #responsiveTabsMain {
+    width: 85%;
+    height: 100%;
+  }
+  img.tab1-image {
+    width: 57vw;
+  }
+  #nasa-fig img {
+    width: auto;
+    max-width: 57vw;
+    margin: 0 auto;
+  }
+  #heading {
+    font-size: 2.5em;
+  }
+}
+@media (max-width: 600px) {
+
+  #responsiveTabsMain {
+    width: 100%;
+    height: 100%;
+  }
+  #tab-1, #tab-2, #tab-3, #tab-4 {
+    height: auto;
+  }
+  img.tab1-image, #nasa-fig img {
+    width: 100%;
+    height: 100%;
+  }
+  #constmap, #constinfo {
+    width: 100%;
+    height: auto;
+    float: none;
+  }
+  #tab-3 > small:last-child {
+    display: none;
+  }
+  #tab-3 > small:first-of-type {
+    display: block;
+  }
 }

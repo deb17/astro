@@ -11,8 +11,7 @@
   <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
   <link href="/static/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Dancing+Script|Courgette" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
 <body>
@@ -23,7 +22,8 @@
     <ul>
         <li id="li-one"><a href="#tab-1" id="li1-a">Picture of the day</a></li>
         <li><a href="#tab-2" id="li2-a">News</a></li>
-        <li><a href="#tab-3" id="li3-a">About</a></li>
+        <li><a href="#tab-3" id="li3-a">Constellation</a></li>
+        <li><a href="#tab-4" id="li4-a">About</a></li>
     </ul>
 
     <div id="tab-1">
@@ -35,7 +35,7 @@
               <a href="http://www.astronomy.com/photos/picture-of-day" target="_blank">Astronomy Magazine</a> - <i>{{ data[0]['picture-of-the-day'][1] }}</i>
             </figcaption>
             {% endif %}
-            <img src="{{ data[0]['picture-of-the-day'][0] }}">
+            <img src="{{ data[0]['picture-of-the-day'][0] }}" class="tab1-image">
           </figure>
         </div>
         <div>
@@ -45,7 +45,7 @@
               <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">NASA</a> - <i>{{ data[1]['picture-of-the-day'][1] }}</i>
             </figcaption>
           {% endif %}
-            <img src="{{ data[1]['picture-of-the-day'][0] }}">
+            <img src="{{ data[1]['picture-of-the-day'][0] }}" class="tab1-image">
           </figure>
         </div>
         <div>
@@ -55,7 +55,7 @@
               <a href="{{ data[2]['picture-of-the-day'][1] }}" target="_blank">space.com - <i>Image of the day</i></a>
             </figcaption>
             {% endif %}
-            <img src="{{ data[2]['picture-of-the-day'][0] }}">
+            <img src="{{ data[2]['picture-of-the-day'][0] }}" class="tab1-image">
           </figure>
         </div>
       </div>
@@ -101,6 +101,14 @@
       </div>
     </div>
     <div id="tab-3">
+      {% set cons = data[4]['choice'].lower().replace(' ', '-') + '-constellation/' %}
+      <h3>Random constellation - <a href="https://www.constellation-guide.com/{{ cons }}" target="_blank"><span id="cons-name">{{ data[4]['choice'] }}</span></a></h3>
+      <div id="constmap"><img src="{{ data[4]['map-url'] }}"></div>
+      <small>Source: IAU and Sky &amp; Telescope magazine</small>
+      <div id="constinfo">{{ data[4]['info']|safe }}<br><small>Source: <a href="https://www.constellation-guide.com" target="_blank">www.constellation-guide.com</a></small></div>
+      <small>Source: IAU and Sky &amp; Telescope magazine</small>
+    </div>
+    <div id="tab-4">
       <img src="/static/dp.jpg" id="myself">
       <div id="about">I, Debashish, am an astronomy enthusiast. It used to be my hobby during college days when I was part of an astronomy club. I have attended public talks, visited planetaria in India and abroad, and chased the solar eclipse. This is apart from reading books and watching sci-fi movies. This website is in memory of the good old days. It is built with the Python Flask framework and jQuery.</div>
     </div>
