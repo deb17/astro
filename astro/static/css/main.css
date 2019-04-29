@@ -15,13 +15,10 @@ html {
 }
 img.tab1-image {
   /*width: 600px;*/
-  width: 46vw;
-  /*height: 400px;*/
-  height: 65vh;
-}
-#nasa-fig img {
   width: auto;
   max-width: 46vw;
+  /*height: 400px;*/
+  height: 65vh;
   margin: 0 auto;
 }
 #responsiveTabsMain {
@@ -52,16 +49,13 @@ figure {
 .caption {
   margin-bottom: 4px;
   font-size: 1.2em;
+  width: 100%;
+  text-align: center;
 }
 .caption a {
   text-decoration: none;
 }
 /* media queries were here */
-#nasa-fig figcaption {
-  margin-bottom: 4px;
-  width: 100%;
-  text-align: center;
-}
 #accordion {
   width: 80%;
   margin: 15px auto 0px;
@@ -143,12 +137,7 @@ figure {
     height: 100%;
   }
   img.tab1-image {
-    width: 57vw;
-  }
-  #nasa-fig img {
-    width: auto;
     max-width: 57vw;
-    margin: 0 auto;
   }
   #heading {
     font-size: 2.5em;
@@ -163,7 +152,7 @@ figure {
   #tab-1, #tab-2, #tab-3, #tab-4 {
     height: auto;
   }
-  img.tab1-image, #nasa-fig img {
+  img.tab1-image, {
     width: 100%;
     height: 100%;
   }
